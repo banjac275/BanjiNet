@@ -9,3 +9,9 @@
 {
     text-align: center;
 }
+
+.tab-content
+{
+    display: inline-block;
+    float: none;
+}
