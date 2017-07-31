@@ -1,25 +1,18 @@
 <?php
-if (!isset($_SESSION)){session_start();}//za startovanje bilo koje sesije kad se pokrene stranica
-
-//include_once ('functions.php');
-
-/*if (isset($_POST) && !empty($_POST))
-{*/
-    //primanje podataka sa index.html
-    if(isset($_POST['email1'])) {
-        $emaillog = $_POST['email1'];
-        echo $emaillog;
+//workaround za _POST metodu jer php storm zeza i nece da je napuni
+$raw_str = file_get_contents('php://input');
+if($raw_str) {
+    foreach (explode('&', $raw_str) as $pair) {
+        $keyvalue = explode("=", $pair);
+        $key = urldecode($keyvalue[0]);
+        $value = urldecode($keyvalue[1]);
+        $_POST[$key] = $value;
     }
-    //$passwordlog = $_POST['password1'];
+}
 
-    //temp
-    //if($emaillog == "admin@admin.com" && $passwordlog == "admin")
-    //{
-       //$message = "Sifra je ispravna!";
-       echo 'provera';
-       /*.' i sifrom '.$passwordlog;*/
-
-        //header("Location: ../index.html");
-        //die();
-    //}
-//}
+if (isset($_POST['email'])) {
+    $mail2 = $_POST['email'];
+    echo $mail2;
+    echo "nasao ga je konacno";
+}
+print_r($_POST);

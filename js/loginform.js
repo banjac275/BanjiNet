@@ -8,7 +8,7 @@ $(document).ready(function() {
         var checkbox = $("#remember").val();
 
         //pravimo data string
-        var dataString = 'email1='+email+'&password1='+password+'&check='+checkbox;
+        //var dataString = 'email1='+email+'&password1='+password+'&check='+checkbox;
 
         if (email == ''||password == '')
         {
@@ -18,7 +18,11 @@ $(document).ready(function() {
             $.ajax({
                 type: "POST",
                 url: "./php/login.php",
-                data: dataString,
+                data: {
+                    'email': email,
+                    'password': password,
+                    'remember': checkbox
+                },
                 success: [function (data) {
                     alert(data);
                 }]
