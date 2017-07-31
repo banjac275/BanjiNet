@@ -8,10 +8,21 @@
 .nav-tabs
 {
     text-align: center;
+    background-color: #d9edf7;
 }
 
-.tab-content
+body
 {
-    display: inline-block;
-    float: none;
+    background-size: 100%;
+    background-repeat: space;
+}
+
+#fields
+{
+    background-color: #d9edf7;
+}
+
+#msgsignin
+{
+    display: none;
 }
